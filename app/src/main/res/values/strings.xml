@@ -1,0 +1,85 @@
+<resources>
+    <string name="app_name">R6 Match History</string>
+    <string name="title_new_match">New Match</string>
+    <string name="title_match_history">Match History</string>
+    <string name="map_Name">Map Name</string>
+    <string name="Date">Date</string>
+    <string name="WinLoss">W/L</string>
+    <string name="Edit">Edit</string>
+    <string name="Defensive_Operators">Defending Ops</string>
+    <string name="Offensive_Operators">Attacking Ops</string>
+    <string name="Map">Map</string>
+    <string name="Save">Save</string>
+    <string name="Win">Win</string>
+    <string name="Loss">Loss</string>
+    <string name="Comments">Comments</string>
+    <string name="Filter">Filter</string>
+    <string-array name="map_array">
+        <item>Bank</item>
+        <item>Border</item>
+        <item>Chalet</item>
+        <item>Club House</item>
+        <item>Coastline</item>
+        <item>Consulate</item>
+        <item>Favela</item>
+        <item>Hereford Base</item>
+        <item>House</item>
+        <item>Kafe Dostoyevsky</item>
+        <item>Kanal</item>
+        <item>Oregon</item>
+        <item>Presidential Plane</item>
+        <item>Skyscraper</item>
+        <item>Theme Park</item>
+        <item>Tower</item>
+        <item>Yacht</item>
+    </string-array>
+    <string-array name="Attacking_Operators_array">
+        <item>Ash</item>
+        <item>Blackbeard</item>
+        <item>Blitz</item>
+        <item>Buck</item>
+        <item>Capitão</item>
+        <item>Dokkaebi</item>
+        <item>Finka</item>
+        <item>Fuze</item>
+        <item>Glaz</item>
+        <item>Hibana</item>
+        <item>IQ</item>
+        <item>Jackal</item>
+        <item>Lion</item>
+        <item>Maverick</item>
+        <item>Nomad</item>
+        <item>Montagne</item>
+        <item>Recruit</item>
+        <item>Sledge</item>
+        <item>Thatcher</item>
+        <item>Thermite</item>
+        <item>Twitch</item>
+        <item>Ying</item>
+        <item>Zofia</item>
+    </string-array>
+    <string-array name="Defending_Operators_array">
+        <item>Alibi</item>
+        <item>Bandit</item>
+        <item>Castle</item>
+        <item>Caveira</item>
+        <item>Clash</item>
+        <item>Doc</item>
+        <item>Echo</item>
+        <item>Ela</item>
+        <item>Frost</item>
+        <item>Jäger</item>
+        <item>Kaid</item>
+        <item>Kapkan</item>
+        <item>Lesion</item>
+        <item>Maestro</item>
+        <item>Mira</item>
+        <item>Mute</item>
+        <item>Pulse</item>
+        <item>Recruit</item>
+        <item>Rook</item>
+        <item>Tachanka</item>
+        <item>Valkyrie</item>
+        <item>Vigil</item>
+    </string-array>
+</resources>
