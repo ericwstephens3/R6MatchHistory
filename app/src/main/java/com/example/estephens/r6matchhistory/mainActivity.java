@@ -20,12 +20,12 @@ public class mainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment fragment;
             switch (item.getItemId()) {
-                case R.id.new_match:
+                case R.id.match_history:
                     fragment = new MatchHistoryFragment();
                     loadFragment(fragment);
                     //filter.setVisible(false);
                     return true;
-                case R.id.match_history:
+                case R.id.new_match:
                     fragment = new NewMatchFragment();
                     loadFragment(fragment);
                     //filter.setVisible(true);
