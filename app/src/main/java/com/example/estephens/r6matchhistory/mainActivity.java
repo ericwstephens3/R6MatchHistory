@@ -23,12 +23,12 @@ public class mainActivity extends AppCompatActivity {
                 case R.id.new_match:
                     fragment = new MatchHistoryFragment();
                     loadFragment(fragment);
-                    filter.setVisible(false);
+                    //filter.setVisible(false);
                     return true;
                 case R.id.match_history:
                     fragment = new NewMatchFragment();
                     loadFragment(fragment);
-                    filter.setVisible(true);
+                    //filter.setVisible(true);
                     return true;
             }
             return false;

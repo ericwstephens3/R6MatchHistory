@@ -28,7 +28,7 @@ public class MatchHistoryFragment extends Fragment {
         Button nextButton = view.findViewById(R.id.nextButton);
         Button prevButton = view.findViewById(R.id.backButton);
         SQL = new SQLCommands(getContext());
-        maxID = SQL.getLastID().getInt(0);
+        //maxID = SQL.getLastID().getInt(0);
         usedID = maxID;
         parser = new CursorParser(SQL.getSearchByID(maxID));
         items = parser.getDatabaseItems();

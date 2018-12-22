@@ -16,20 +16,21 @@ public class CursorParser {
     }
 
     private void parse(){
-        cursor.moveToFirst();
-        do{
-            DatabaseItem item = new DatabaseItem();
-            item.setId(cursor.getInt(cursor.getColumnIndex("ID")));
-            item.setDate(cursor.getString(cursor.getColumnIndex("DATE")));
-            item.setMapName(cursor.getString(cursor.getColumnIndex("MAP")));
-            item.setAttackOperators(cursor.getString(cursor.getColumnIndex("ATTACK_OPS")));
-            item.setDefenseOperators(cursor.getString(cursor.getColumnIndex("DEFEND_OPS")));
-            item.setwinLoss(cursor.getString(cursor.getColumnIndex("WINLOSS")));
-            item.setScore(cursor.getString(cursor.getColumnIndex("SCORE")));
-            item.setComments(cursor.getString(cursor.getColumnIndex("COMMENTS")));
+        if (cursor.moveToFirst()) {
+            do {
+                DatabaseItem item = new DatabaseItem();
+                item.setId(cursor.getInt(cursor.getColumnIndex("ID")));
+                item.setDate(cursor.getString(cursor.getColumnIndex("DATE")));
+                item.setMapName(cursor.getString(cursor.getColumnIndex("MAP")));
+                item.setAttackOperators(cursor.getString(cursor.getColumnIndex("ATTACK_OPS")));
+                item.setDefenseOperators(cursor.getString(cursor.getColumnIndex("DEFEND_OPS")));
+                item.setwinLoss(cursor.getString(cursor.getColumnIndex("WINLOSS")));
+                item.setScore(cursor.getString(cursor.getColumnIndex("SCORE")));
+                item.setComments(cursor.getString(cursor.getColumnIndex("COMMENTS")));
 
-            items.add(item);
-        }while(cursor.moveToNext());
+                items.add(item);
+            } while (cursor.moveToNext());
+        }
     }
 
     public ArrayList<DatabaseItem> getDatabaseItems(){
