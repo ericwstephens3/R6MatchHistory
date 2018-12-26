@@ -20,6 +20,7 @@ public class SQLCommands extends SQLiteOpenHelper implements Serializable {
     public static final String COL_6 = "WINLOSS";
     public static final String COL_7 = "SCORE";
     public static final String COL_8 = "COMMENTS";
+    public static final String COL_9 = "PLAYER_SCORE";
 
 
     public SQLCommands(Context context){
@@ -27,7 +28,7 @@ public class SQLCommands extends SQLiteOpenHelper implements Serializable {
     }
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, DATE TEXT, MAP TEXT, ATTACK_OPS TEXT, DEFEND_OPS TEXT, WINLOSS TEXT, COMMENTS TEXT)");
+        sqLiteDatabase.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, DATE TEXT, MAP TEXT, ATTACK_OPS TEXT, DEFEND_OPS TEXT, WINLOSS TEXT, SCORE TEXT, COMMENTS TEXT, PLAYER_SCORE TEXT)");
     }
 
     @Override
@@ -36,7 +37,7 @@ public class SQLCommands extends SQLiteOpenHelper implements Serializable {
         onCreate(sqLiteDatabase);
     }
 
-    public boolean insertData(String date, String map, String attackOps, String defenseOps, String winLoss, String score, String comments)
+    private boolean insertData(String date, String map, String attackOps, String defenseOps, String winLoss, String score, String comments, String playerScore)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -47,6 +48,7 @@ public class SQLCommands extends SQLiteOpenHelper implements Serializable {
         contentValues.put(COL_6, winLoss);
         contentValues.put(COL_7, score);
         contentValues.put(COL_8, comments);
+        contentValues.put(COL_9, playerScore);
 
         return db.insert(TABLE_NAME, null, contentValues) != -1;
     }
@@ -98,5 +100,25 @@ public class SQLCommands extends SQLiteOpenHelper implements Serializable {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor result = db.rawQuery("select last_insert_rowid() from " + TABLE_NAME, null);
         return result;
+    }
+
+    public boolean insert(DatabaseItem item){
+        String date = item.getDate();
+        String map = item.getMapName();
+        String attackOps = item.getAttackOperators().toString();
+        String defenseOps = item.getDefenseOperators().toString();
+        String winLoss;
+        String score = item.getScore();
+        String comments = item.getComments();
+        String playerScore = item.getPlayerScore();
+
+        if (item.getWinLoss())
+            winLoss = "WIN";
+        else
+            winLoss = "LOSS";
+
+        return insertData(date, map, attackOps, defenseOps, winLoss, score, comments, playerScore);
+
+
     }
 }

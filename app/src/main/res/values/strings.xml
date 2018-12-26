@@ -14,6 +14,7 @@
     <string name="Loss">Loss</string>
     <string name="Comments">Comments</string>
     <string name="Filter">Filter</string>
+    <string name="player_score">Player Score</string>
     <string-array name="map_array">
         <item>Bank</item>
         <item>Border</item>

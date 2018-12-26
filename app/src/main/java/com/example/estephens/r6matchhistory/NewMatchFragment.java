@@ -22,32 +22,39 @@ public class NewMatchFragment extends Fragment {
     private Spinner map;
     private Spinner attackOps;
     private Spinner defendOps;
-    private RadioButton win;
-    private RadioButton loss;
     private EditText score;
     private EditText comments;
     private Button send;
     private RadioGroup radioGroup;
-    private String dateString;
+    private EditText playerScore;
+    private DatabaseItem item;
+    String[] attArray;
+    String[] defArray;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.new_match_fragment, null);
         SQL = new SQLCommands(getContext());
+        item = new DatabaseItem();
+
+        attArray = getResources().getStringArray(R.array.Attacking_Operators_array);
+        defArray = getResources().getStringArray(R.array.Defending_Operators_array);
 
         date = view.findViewById(R.id.dateEditText);
         map = view.findViewById(R.id.mapSpinner);
         attackOps = view.findViewById(R.id.attackingOpsSpinner);
         defendOps = view.findViewById(R.id.defendingOpsSpinner);
-        win = view.findViewById(R.id.winRadioButton);
-        loss = view.findViewById(R.id.lossRadioButton);
         radioGroup = view.findViewById(R.id.WinLossRadioGroup);
         score = view.findViewById(R.id.scoreEditText);
         comments = view.findViewById(R.id.commentEditText);
         send = view.findViewById(R.id.saveButton);
+        playerScore = view.findViewById(R.id.playerScoreEditText);
 
         send.setOnClickListener(sendButtonOnClickListener);
         date.setOnEditorActionListener(dateListener);
-        
+        playerScore.setOnEditorActionListener(playerScoreListener);
+        radioGroup.setOnCheckedChangeListener(radioGroupListener);
+        score.setOnEditorActionListener(scoreListener);
+        comments.setOnEditorActionListener(commentsListener);
 
         return view;
     }
@@ -56,7 +63,7 @@ public class NewMatchFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-
+            SQL.insert(item);
         }
     };
 
@@ -65,7 +72,53 @@ public class NewMatchFragment extends Fragment {
         @Override
         public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
             if (i == EditorInfo.IME_ACTION_DONE){
-               dateString = textView.getText().toString();
+               item.setDate(textView.getText().toString());
+               return true;
+            }
+            return false;
+        }
+    };
+
+    private EditText.OnEditorActionListener playerScoreListener = new EditText.OnEditorActionListener(){
+
+        @Override
+        public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+            if (i == EditorInfo.IME_ACTION_DONE){
+                item.setPlayerScore(textView.getText().toString());
+                return true;
+            }
+            return false;
+        }
+    };
+
+    private RadioGroup.OnCheckedChangeListener radioGroupListener = new RadioGroup.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(RadioGroup radioGroup, int i) {
+            if (i == R.id.winRadioButton)
+                item.setwinLoss(true);
+            else
+                item.setwinLoss(false);
+        }
+    };
+
+    private EditText.OnEditorActionListener scoreListener = new EditText.OnEditorActionListener() {
+        @Override
+        public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+            if (i == EditorInfo.IME_ACTION_DONE){
+                item.setScore(textView.getText().toString());
+                return true;
+            }
+            return false;
+
+        }
+    };
+
+    private EditText.OnEditorActionListener commentsListener = new EditText.OnEditorActionListener() {
+        @Override
+        public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+            if (i == EditorInfo.IME_ACTION_DONE){
+                item.setComments(textView.getText().toString());
+                return true;
             }
             return false;
         }

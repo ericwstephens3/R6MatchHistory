@@ -24,7 +24,10 @@ public class CursorParser {
                 item.setMapName(cursor.getString(cursor.getColumnIndex("MAP")));
                 item.setAttackOperators(cursor.getString(cursor.getColumnIndex("ATTACK_OPS")));
                 item.setDefenseOperators(cursor.getString(cursor.getColumnIndex("DEFEND_OPS")));
-                item.setwinLoss(cursor.getString(cursor.getColumnIndex("WINLOSS")));
+                if (cursor.getString(cursor.getColumnIndex("WINLOSS")).equals("WIN"))
+                    item.setwinLoss(true);
+                else
+                    item.setwinLoss(false);
                 item.setScore(cursor.getString(cursor.getColumnIndex("SCORE")));
                 item.setComments(cursor.getString(cursor.getColumnIndex("COMMENTS")));
 

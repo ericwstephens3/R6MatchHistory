@@ -12,6 +12,7 @@ public class DatabaseItem {
     private String score;
     private boolean winLoss;
     private String comments;
+    private String playerScore;
 
     public DatabaseItem (){}
 
@@ -47,11 +48,12 @@ public class DatabaseItem {
         this.score = score;
     }
 
-    public void setwinLoss(String winLoss){
-        if (winLoss == "win")
-            this.winLoss = true;
-        else
-            this.winLoss = false;
+    public void setwinLoss(boolean winLoss){
+        this.winLoss = winLoss;
+    }
+
+    public void setPlayerScore(String score){
+        this.playerScore = score;
     }
 
     public void setComments(String comments){
@@ -88,6 +90,10 @@ public class DatabaseItem {
 
     public String getComments() {
         return comments;
+    }
+
+    public String getPlayerScore(){
+        return playerScore;
     }
 
     @Override
