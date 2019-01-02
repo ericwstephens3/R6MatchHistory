@@ -23,12 +23,12 @@ public class mainActivity extends AppCompatActivity {
                 case R.id.match_history:
                     fragment = new MatchHistoryFragment();
                     loadFragment(fragment);
-                    //filter.setVisible(false);
+                    filter.setVisible(false);
                     return true;
                 case R.id.new_match:
                     fragment = new NewMatchFragment();
                     loadFragment(fragment);
-                    //filter.setVisible(true);
+                    filter.setVisible(true);
                     return true;
             }
             return false;
@@ -75,7 +75,7 @@ public class mainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.top_navigation, menu);
-        filter = findViewById(R.id.filter);
+        filter = menu.getItem(R.id.filter);
         return true;
     }
 

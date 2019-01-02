@@ -43,4 +43,8 @@ public class CursorParser {
     public Cursor getCursor() {
         return cursor;
     }
+
+    public String toString(){
+        return items.toString();
+    }
 }
